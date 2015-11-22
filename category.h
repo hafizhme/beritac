@@ -2,7 +2,7 @@
 #define CATEGORY_H
 #include "news.h"
 
-struct infotype
+struct infoCategory
 {
 	char id[5];
 	char nameCategory[20];
@@ -12,7 +12,7 @@ typedef struct Category *adrCategory;
 
 struct elmCategory
 {
-	info infotype;
+	infoCategory info;
 	adrCategory prev, next;
 	adrNews news;
 };

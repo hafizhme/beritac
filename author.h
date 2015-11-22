@@ -2,7 +2,7 @@
 #define AUTHOR_H
 #include "category.h"
 
-struct infotype
+struct infoAuthor
 {
 	char id[5];
 	char nameAuthor[20];
@@ -12,7 +12,7 @@ typedef struct Author *adrAuthor;
 
 struct elmAuthor
 {
-	info infotype;
+	infoAuthor info;
 	adrAuthor prev, next;
 	adrCategory category;
 };

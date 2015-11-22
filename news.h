@@ -2,7 +2,9 @@
 #define NEWS_H
 #include <string>
 
-struct infotype
+using namespace std;
+
+struct infoNews
 {
 	char id[5];
 	char title[30];
@@ -15,7 +17,7 @@ typedef struct News *adrNews;
 
 struct elmNews
 {
-	info infotype;
+	infoNews info;
 	adrNews prev, next;
 };
 struct News

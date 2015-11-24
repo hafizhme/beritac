@@ -13,7 +13,7 @@ struct infoNews
 	string body;
 };
 
-typedef struct News *adrNews;
+typedef struct elmNews *adrNews;
 
 struct elmNews
 {

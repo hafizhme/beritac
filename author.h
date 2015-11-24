@@ -4,11 +4,11 @@
 
 struct infoAuthor
 {
-	char id[5];
+	char idAuthor[5];
 	char nameAuthor[20];
 };
 
-typedef struct Author *adrAuthor;
+typedef struct elmAuthor *adrAuthor;
 
 struct elmAuthor
 {

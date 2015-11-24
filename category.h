@@ -8,7 +8,7 @@ struct infoCategory
 	char nameCategory[20];
 };
 
-typedef struct Category *adrCategory;
+typedef struct elmCategory *adrCategory;
 
 struct elmCategory
 {

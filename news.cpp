@@ -5,9 +5,9 @@
 
 using namespace std;
 
-adrNews alocate(infoAuthor iA)
+adrNews alocate(infoNews iA)
 {
-	adrAuthor eA = new elmAuthor();
+	adrNews eA = new elmNews();
 
 	eA->info = iA;
 	eA->prev = NULL;
@@ -18,8 +18,8 @@ adrNews alocate(infoAuthor iA)
 
     
 		
-void insertAuthor(Author *A, infoAuthor iA){
-	adrAuthor eA, P;
+void insertNews(News *A, infoNews iA){
+	adrNews eA, P;
 
 	eA = alocate(iA);
 	P = A->first;

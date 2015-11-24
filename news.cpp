@@ -25,7 +25,7 @@ void insertAuthor(Author *A, infoAuthor iA){
 	P = A->first;
 	if (P != NULL){
 		eA->next = P;
-	  P->prev=eA;
+	  	P->prev=eA;
 	}
   A->first = eA;
 }

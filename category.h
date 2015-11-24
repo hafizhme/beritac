@@ -6,6 +6,7 @@ struct infoCategory
 {
 	char id[5];
 	char nameCategory[20];
+	char descCategory[50];
 };
 
 typedef struct elmCategory *adrCategory;

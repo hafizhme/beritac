@@ -14,7 +14,7 @@ struct elmCategory
 {
 	infoCategory info;
 	adrCategory prev, next;
-	adrNews news;
+	News news;
 };
 struct Category
 {

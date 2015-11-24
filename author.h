@@ -14,7 +14,7 @@ struct elmAuthor
 {
 	infoAuthor info;
 	adrAuthor prev, next;
-	adrCategory category;
+	Category category;
 };
 struct Author
 {

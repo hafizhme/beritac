@@ -1,11 +1,13 @@
-// DELETE AUTHOR BELUM MENGHAPUS ANAK-ANAKNYA
-
 #include "author.h"
 #include <iostream>
 #include <stdio.h>
 
 using namespace std;
 
+void createAuthor(Author *A)
+{
+	A->first = NULL;
+}
 adrAuthor alocate(infoAuthor iA)
 {
 	adrAuthor eA = new elmAuthor();
@@ -13,7 +15,7 @@ adrAuthor alocate(infoAuthor iA)
 	eA->info = iA;
 	eA->prev = NULL;
 	eA->next = NULL;
-	eA->category = NULL;
+	eA->category.first = NULL;
 
 	return eA;
 }
@@ -35,7 +37,6 @@ void insertAuthor(Author *A, infoAuthor iA)
 		P->next = eA;
 		eA->next->prev = eA;
 	}
-
 }
 void inputAuthor(Author *A, int sumAuthor)
 {

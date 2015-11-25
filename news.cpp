@@ -1,31 +1,62 @@
 
-#include "berita.h"
+#include "news.h"
 #include <iostream>
 #include <stdio.h>
 
 using namespace std;
 
-adrNews alocate(infoNews iA)
+void createNews(News *N)
 {
-	adrNews eA = new elmNews();
-
-	eA->info = iA;
-	eA->prev = NULL;
-	eA->next = NULL;
-
-	return eA;
+	N->first =  NULL;
 }
+adrNews alocate(infoNews iN)
+{
+	adrNews eN = new elmNews();
 
-    
-		
-void insertNews(News *A, infoNews iA){
-	adrNews eA, P;
+	eN->info = iN;
+	eN->prev = NULL;
+	eN->next = NULL;
 
-	eA = alocate(iA);
-	P = A->first;
-	if (P != NULL){
-		eA->next = P;
-	  	P->prev=eA;
+	return eN;
+}		
+void insertNews(News *N, infoNews iN)
+{
+	adrNews eN;
+
+	eN = alocate(iN);
+	if (N->first != NULL){
+		eN->next = N->first;
+	  	N->first->prev = eN;
 	}
-  A->first = eA;
+ 	N->first = eN;
+}
+adrNews findNews(News N, infoNews F)
+{
+	adrNews P;
+
+	P = N.first;
+	while (!(P == NULL) && !(P->info.title == F.title))
+		P = P->next;
+	return P;
+}
+void deleteNews(News *N, infoNews F)
+{
+	adrNews D;
+
+	D = findNews(*N, F);
+	if (D == N->first) {			// D first
+		N->first = (N->first)->prev;
+		D->prev = NULL;
+		D->next = NULL;
+	} else if (D->next != NULL){	// D mid
+		D->prev->next = D->next;
+		D->next->prev = D->prev;
+		D->next = NULL;
+		D->prev = NULL;
+	} else {						// D last
+		D->prev->next = D->next;
+		D->next = NULL;
+		D->prev = NULL;
+	}
+	delete D;
 }

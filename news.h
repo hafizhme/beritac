@@ -24,5 +24,9 @@ struct News
 {
 	adrNews first;
 };
-
+void createNews(News *N);
+adrNews alocate(infoNews iN);
+void insertNews(News *N, infoNews iN);
+adrNews findNews(News N, infoNews F);
+void deleteNews(News *N, infoNews F);
 #endif

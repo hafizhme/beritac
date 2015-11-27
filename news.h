@@ -4,12 +4,18 @@
 
 using namespace std;
 
+struct t_date {
+	int dd;		// hari : 01 - 31
+	int mm;		// bulan : 01 - 12
+	int yyyy;	// tahun : 2000 - 2020
+	int dt = yyyy*10000 + mm*100 + dd;
+};
+
 struct infoNews
 {
-	char id[5];
+	char idNews[5];
 	char title[30];
-	char tanggal;
-	char waktu;
+	t_date date;
 	string body;
 };
 
@@ -29,4 +35,6 @@ adrNews alocate(infoNews iN);
 void insertNews(News *N, infoNews iN);
 adrNews findNews(News N, infoNews F);
 void deleteNews(News *N, infoNews F);
+void printNews(News N);
+
 #endif

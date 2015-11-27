@@ -1,4 +1,3 @@
-
 #include "news.h"
 #include <iostream>
 #include <stdio.h>
@@ -20,15 +19,31 @@ adrNews alocate(infoNews iN)
 	return eN;
 }		
 void insertNews(News *N, infoNews iN)
-{
+{	
+	// urut dari yang terbaru, hingga terlama
+	// paling baru berada di first
 	adrNews eN;
+	adrNews P;
 
 	eN = alocate(iN);
 	if (N->first != NULL){
-		eN->next = N->first;
-	  	N->first->prev = eN;
+		P = N->first;
+		while (!(eN->info.date.dt > P->info.date.dt) && !(P->next == NULL))
+			P = P->next;
+
+		if (P == N->first) {
+			N->first = eN;
+			eN->next = P;
+			P->prev = eN;
+		} else {
+			eN->next = P;
+			eN->prev = P->prev;
+			P->prev->next = eN;
+			P->prev = eN;
+		}
+	} else {
+		N->first = eN;
 	}
- 	N->first = eN;
 }
 adrNews findNews(News N, infoNews F)
 {
@@ -59,4 +74,23 @@ void deleteNews(News *N, infoNews F)
 		D->prev = NULL;
 	}
 	delete D;
+}
+void printNews(News N)
+{
+	adrNews P;
+
+	P = N.first;
+	if (P!=NULL) {
+		cout << "idNews |  nameNews\n";
+
+		while (P != NULL) {
+			cout << "   " << P->info.idNews;
+			cout << "\t"  << P->info.title;
+			cout << endl;
+
+			P = P->next;
+		}
+	} else {
+		cout << "   tidak ada data" << endl;
+	}
 }

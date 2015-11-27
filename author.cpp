@@ -84,3 +84,26 @@ void deleteAuthor(Author *A, infoAuthor F)
 		delete D;
 	}
 }
+void printAuthor(Author A)
+{
+	adrAuthor P;
+
+	P = A.first;
+	if (P!=NULL) {
+		cout << "idAuthor  |  nameAuthor\n";
+		cout << "   " << P->info.idAuthor;
+		cout << "\t"  << P->info.nameAuthor;
+		cout << endl;
+
+		P = P->next;
+		while (P != A.first) {
+			cout << "   " << P->info.idAuthor;
+			cout << "\t"  << P->info.nameAuthor;
+			cout << endl;
+
+			P = P->next;
+		}
+	} else {
+		cout << "   tidak ada data" << endl;
+	}
+}

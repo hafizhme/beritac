@@ -70,3 +70,22 @@ void deleteCategory(Category *C, infoCategory F)
 	}
 	delete D;
 }
+void printCategory(Category C)
+{
+	adrCategory P;
+
+	P = C.first;
+	if (P!=NULL) {
+		cout << "idCategory  |  nameCategory\n";
+
+		while (P != NULL) {
+			cout << "   " << P->info.idCategory;
+			cout << "\t\t"  << P->info.nameCategory;
+			cout << endl;
+
+			P = P->next;
+		}
+	} else {
+		cout << "   tidak ada data" << endl;
+	}
+}

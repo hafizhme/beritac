@@ -1,11 +1,14 @@
 #ifndef AUTHOR_H
 #define AUTHOR_H
 #include "category.h"
+#include <string>
+
+using namespace std;
 
 struct infoAuthor
 {
-	char idAuthor[5];
-	char nameAuthor[20];
+	string idAuthor;
+	string nameAuthor;
 };
 
 typedef struct elmAuthor *adrAuthor;

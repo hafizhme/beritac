@@ -50,7 +50,7 @@ adrNews findNews(News N, infoNews F)
 	adrNews P;
 
 	P = N.first;
-	while (!(P == NULL) && !(strcmp(P->info.title, F.title) == 0))
+	while (!(P == NULL) && !(P->info.idNews == F.idNews))
 		P = P->next;
 	return P;
 }

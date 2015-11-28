@@ -37,17 +37,9 @@ adrCategory findCategory(Category C, infoCategory F)
 	adrCategory P;
 
 	P = C.first;
-	if (strcmp(P->info.idCategory, F.idCategory) == 0)
-		return P;
-	else {
+	while (!(P == NULL) && !(P->info.idCategory == F.idCategory))
 		P = P->next;
-		while (!(P == C.first) && !(strcmp(P->info.idCategory, F.idCategory) == 0))
-			P = P->next;
-		if (P != C.first)
-			return P;
-		else
-			return NULL;
-	}
+	return P;
 }
 void deleteCategory(Category *C, infoCategory F)
 {

@@ -1,11 +1,12 @@
 #ifndef CATEGORY_H
 #define CATEGORY_H
 #include "news.h"
+#include <string>
 
 struct infoCategory
 {
-	char idCategory[5];
-	char nameCategory[20];
+	string idCategory;
+	string nameCategory;
 };
 
 typedef struct elmCategory *adrCategory;

@@ -3,7 +3,7 @@
 #include "category.h"
 #include "author.h"
 #include <iostream>
-#include <cstring>
+#include <string>
 
 
 using namespace std;
@@ -18,7 +18,6 @@ void primInsertAuthor(Author *A, infoAuthor iA)
 
 	// duplikasi category
 	eA = findAuthor(*A, iA);
-    cout << eA << endl;
 	P = eA->next != eA? eA->next : NULL;
 
 	if (P != NULL) {
@@ -40,19 +39,19 @@ void primInsertCategory(Author *A, infoCategory iC)
 
 	P = A->first;
 	if (P != NULL) {
-		if (P->next == P) {		// untuk satu elemen Author
+		// untuk satu pertama Author
+        insertCategory(&P->category, iC);
+        eC = findCategory(P->category, iC);	// create news
+        createNews(&eC->news);
+
+		P = P->next;		// lebih dari satu elemen Author
+		while (P != A->first) {
 			insertCategory(&P->category, iC);
 			eC = findCategory(P->category, iC);	// create news
 			createNews(&eC->news);
-		} else {
-			P = P->next;		// lebih dari satu elemen Author
-			while (P != A->first) {
-				insertCategory(&P->category, iC);
-				eC = findCategory(P->category, iC);	// create news
-				createNews(&eC->news);
-				P = P->next;
-			}
+			P = P->next;
 		}
+
 	}
 }
 void primInsertNews(Author *A, infoAuthor iA, infoCategory iC, infoNews iN)
@@ -145,7 +144,8 @@ void primEditNewsTitle(Author *A, infoAuthor iA, infoCategory iC, infoNews iNl, 
 	eC = findCategory(eA->category, iC);
 	eN = findNews(eC->news, iNl);
 
-	strcpy(eN->info.title, iNb.title);
+	eN->info.title = iNb.title;
+
 }
 void printByTime(Author *A, infoAuthor iA, t_date dFrom, t_date dUntil)
 {
@@ -233,7 +233,8 @@ void inputAuthor(Author *A)
 	infoAuthor iA;
 
 	cout << "Author Name : ";
-		cin >> iA.nameAuthor;
+		getline(cin, iA.nameAuthor);
+		getline(cin, iA.nameAuthor);
 	cout << "Author ID  : ";
 		cin >> iA.idAuthor;
 
@@ -244,7 +245,8 @@ void inputCategory(Author *A)
 	infoCategory iC;
 
 	cout << "Category Name : ";
-		cin >> iC.nameCategory;
+		getline(cin, iC.nameCategory);
+		getline(cin, iC.nameCategory);
 	cout << "Category ID  : ";
 		cin >> iC.idCategory;
 
@@ -255,19 +257,28 @@ void inputNews(Author *A)
 	infoAuthor iA;
 	infoCategory iC;
 	infoNews iN;
-
+    cout << "Author List :\n";
+    printAuthor(*A);
+    cout << endl << "Category List :\n";
+    printCategory(A->first->category);
+    cout << endl;
+    cout << "News detail :\n";
 	cout << "idAuthor     : ";
-		cin >> iN.title;
+		getline(cin, iN.title);
+		getline(cin, iN.title);
 	cout << "idCategory   : ";
-		cin >> iN.title;
+		getline(cin, iN.title);
+		getline(cin, iN.title);
 	cout << "Title   [50] : ";
-		cin >> iN.title;
+		getline(cin, iN.title);
+		getline(cin, iN.title);
 	cout << "News ID [05] : ";
 		cin >> iN.idNews;
 	cout << "Date [dd mm yyyy] : ";
 		cin >> iN.date.dd >> iN.date.mm >> iN.date.yyyy;
 	cout << "Body : \n";
-		cin >> iN.body;
+		getline(cin, iN.body);
+		getline(cin, iN.body);
 
 	primInsertNews(A, iA, iC, iN);
 }
@@ -367,4 +378,70 @@ void printNct(Author *A)
         cin >> iC.idCategory;
 
     printByCategory(A, iA, iC);
+}
+void help() {
+    cout << "input author" << endl;
+    cout << "\t\tmemasukkan author baru" << endl << endl;
+
+    cout << "input category" << endl;
+    cout << "\t\tmemasukkan category baru" << endl << endl;
+
+    cout << "input news" << endl;
+    cout << "\t\tmemasukkan berita ke dalam author dan category tertentu" << endl << endl;
+
+    cout << "change news category" << endl;
+    cout << "\t\tmengganti kategori suatu berita" << endl << endl;
+
+    cout << "change news title" << endl;
+    cout << "\t\tmengganti judul berita" << endl << endl;
+
+    cout << "show news by time" << endl;
+    cout << "\t\tmenampilkan berita berdasarkan rentang waktu" << endl << endl;
+
+    cout << "show news by category" << endl;
+    cout << "\t\tmenampilkan berita berdasarkan kategori" << endl << endl;
+
+    cout << "help" << endl;
+    cout << "\t\tmenampilkan bantuan" << endl;
+    cout << endl;
+}
+void credit()
+{
+    cout << "lecturer" << endl;
+    cout << "\tBambang Ari Wahyudi" << endl << endl;
+    cout << "practicum assistant" << endl;
+    cout << "\tDyah Ayu Cintya Dewi" << endl << endl;
+    cout << "team leader" << endl;
+    cout << "\tSatria Hafizh Rizkitama Harsono" << endl << endl;
+    cout << "team member" << endl;
+    cout << "\tMuhammad Andika Satrugna Mahardika" << endl;
+    cout << "\tThareq Arsyad Darmawan" << endl;
+    cout << "\tYisti Yisnika" << endl;
+    cout << endl;
+}
+void translateCommand(string command, Author *A)
+{
+         if (command == "input author")
+        inputAuthor(A);
+    else if (command == "input category")
+        inputCategory(A);
+    else if (command == "input news")
+        inputNews(A);
+    else if (command == "change news category")
+        switchCategory(A);
+    else if (command == "change news title")
+        changeNewsTitle(A);
+    else if (command == "show news by time")
+        printNtm(A);
+    else if (command == "show news by category")
+        printNct(A);
+    else if (command == "help")
+        help();
+    else if (command == "credit")
+        credit();
+    else {
+        cout << "periksa perintah yang anda masukkan" << endl;
+        cout << "ketik \"help\" untuk menampilkan perintah" << endl;
+        cout << endl;
+    }
 }

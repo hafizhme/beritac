@@ -13,8 +13,8 @@ struct t_date {
 
 struct infoNews
 {
-	char idNews[5];
-	char title[30];
+	string idNews;
+	string title;
 	t_date date;
 	string body;
 };

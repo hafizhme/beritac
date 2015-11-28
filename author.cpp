@@ -43,11 +43,11 @@ adrAuthor findAuthor(Author A, infoAuthor F)
 	adrAuthor P;
 
 	P = A.first;
-	if (strcmp(P->info.idAuthor, F.idAuthor) == 0)
+	if (P->info.idAuthor == F.idAuthor)
 		return P;
 	else {
 		P = P->next;
-		while (!(P == A.first) && !(strcmp(P->info.idAuthor, F.idAuthor) == 0))
+		while (!(P == A.first) && !(P->info.idAuthor == F.idAuthor))
 			P = P->next;
 		if (P != A.first)
 			return P;
@@ -83,13 +83,13 @@ void printAuthor(Author A)
 	if (P!=NULL) {
 		cout << "idAuthor  |  nameAuthor\n";
 		cout << "   " << P->info.idAuthor;
-		cout << "\t"  << P->info.nameAuthor;
+		cout << "\t\t"  << P->info.nameAuthor;
 		cout << endl;
 
 		P = P->next;
 		while (P != A.first) {
 			cout << "   " << P->info.idAuthor;
-			cout << "\t"  << P->info.nameAuthor;
+			cout << "\t\t"  << P->info.nameAuthor;
 			cout << endl;
 
 			P = P->next;

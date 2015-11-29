@@ -395,6 +395,15 @@ void help() {
     cout << "input news" << endl;
     cout << "\t\tmemasukkan berita ke dalam author dan category tertentu" << endl << endl;
 
+    cout << "remove author" << endl;
+    cout << "\t\tmenghapus author beserta beserta berita yang ditulis" << endl << endl;
+
+    cout << "remove category" << endl;
+    cout << "\t\tmenghapus category beserta berita dibawahnya untuk seluruh author" << endl << endl;
+
+    cout << "remove news" << endl;
+    cout << "\t\tmenghapus berita tertentu" << endl << endl;
+
     cout << "change news category" << endl;
     cout << "\t\tmengganti kategori suatu berita" << endl << endl;
 
@@ -433,6 +442,12 @@ void translateCommand(string command, Author *A)
         inputCategory(A);
     else if (command == "input news")
         inputNews(A);
+    else if (command == "remove author")
+        removeAuthor(A);
+    else if (command == "remove category")
+        removeCategory(A);
+    else if (command == "remove news")
+        removeNews(A);
     else if (command == "change news category")
         switchCategory(A);
     else if (command == "change news title")

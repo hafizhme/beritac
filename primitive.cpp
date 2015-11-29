@@ -247,7 +247,7 @@ void inputAuthor(Author *A)
 	cout << "Author Name : ";
 		getline(cin, iA.nameAuthor);
 	cout << "Author ID  : ";
-		cin >> iA.idAuthor;
+		getline(cin, iA.idAuthor);
 
 	primInsertAuthor(A, iA);
 }
@@ -258,7 +258,7 @@ void inputCategory(Author *A)
 	cout << "Category Name : ";
 		getline(cin, iC.nameCategory);
 	cout << "Category ID  : ";
-		cin >> iC.idCategory;
+		getline(cin, iC.idCategory);
 
 	primInsertCategory(A, iC);
 }
@@ -280,10 +280,11 @@ void inputNews(Author *A)
 	cout << "Title   [50] : ";
 		getline(cin, iN.title);
 	cout << "News ID [05] : ";
-		cin >> iN.idNews;
+		getline(cin, iN.idNews);
 	cout << "Date [dd mm yyyy] : ";
 		cin >> iN.date.dd >> iN.date.mm >> iN.date.yyyy;
 	cout << "Body : \n";
+		getline(cin, iN.body);
 		getline(cin, iN.body);
 
 	primInsertNews(A, iA, iC, iN);
@@ -293,7 +294,7 @@ void removeAuthor(Author *A)
 {
     infoAuthor iA;
     cout << "idAuthor : ";
-		cin >> iA.idAuthor;
+		getline(cin, iA.idAuthor);
 
     primDeleteAuthor(A, iA);
 }
@@ -301,7 +302,7 @@ void removeCategory(Author *A)
 {
     infoCategory iC;
     cout << "idCategory : ";
-        cin >> iC.idCategory;
+        getline(cin, iC.idCategory);
 
     primDeleteCategory(A, iC);
 }
@@ -312,11 +313,11 @@ void removeNews(Author *A)
     infoNews iN;
 
     cout << "idAuthor : ";
-		cin >> iA.idAuthor;
+		getline(cin, iA.idAuthor);
     cout << "idCategory : ";
-        cin >> iC.idCategory;
+        getline(cin, iC.idCategory);
     cout << "idNews : ";
-        cin >> iN.idNews;
+        getline(cin, iN.idNews);
 
     primDeleteNews(A, iA, iC, iN);
 }
@@ -327,13 +328,13 @@ void switchCategory(Author *A)
     infoNews iN;
 
     cout << "idAuthor : ";
-        cin >> iA.idAuthor;
+        getline(cin, iA.idAuthor);
     cout << "idCategoryLama : ";
-        cin >> iCl.idCategory;
+        getline(cin, iCl.idCategory);
     cout << "idNews : ";
-        cin >> iN.idNews;
+        getline(cin, iN.idNews);
     cout << "idCategoryBaru : ";
-        cin >> iCb.idCategory;
+        getline(cin, iCb.idCategory);
 
     primChangeCategory(A, iA, iCl, iCb, iN);
 }
@@ -344,13 +345,13 @@ void changeNewsTitle(Author *A)
     infoNews iNl, iNb;
 
     cout << "idAuthor : ";
-        cin >> iA.idAuthor;
+        getline(cin, iA.idAuthor);
     cout << "idCategory : ";
-        cin >> iC.idCategory;
+        getline(cin, iC.idCategory);
     cout << "idNews : ";
-        cin >> iNl.idNews;
+        getline(cin, iNl.idNews);
     cout << "New Title : ";
-        cin >> iNb.title;
+        getline(cin, iNb.title);
 
     primEditNewsTitle(A, iA, iC, iNl, iNb);
 }
@@ -360,16 +361,12 @@ void printNtm(Author *A)
     t_date from, until;
 
      cout << "idAuthor : ";
-        cin >> iA.idAuthor;
+        getline(cin, iA.idAuthor);
     cout << "Tampilkan berita pada selang waktu [dd mm yyyy]\n";
     cout << "From : ";
-        cin >> from.dd;
-        cin >> from.mm;
-        cin >> from.yyyy;
+        cin >> from.dd >> from.mm >> from.yyyy;
     cout << "Until : ";
-        cin >> until.dd;
-        cin >> until.mm;
-        cin >> until.yyyy;
+        cin >> until.dd >> until.mm >> until.yyyy;
 
     printByTime(A, iA, from, until);
 }
@@ -379,9 +376,9 @@ void printNct(Author *A)
     infoCategory iC;
 
     cout << "idAuthor : ";
-        cin >> iA.idAuthor;
+        getline(cin, iA.idAuthor);
     cout << "idCategory : ";
-        cin >> iC.idCategory;
+        getline(cin, iC.idCategory);
 
     printByCategory(A, iA, iC);
 }
@@ -460,7 +457,7 @@ void translateCommand(string command, Author *A)
         help();
     else if (command == "credit")
         credit();
-    else {
+    else if (command != "") {
         cout << "periksa perintah yang anda masukkan" << endl;
         cout << "ketik \"help\" untuk menampilkan perintah" << endl;
         cout << endl;

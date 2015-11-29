@@ -17,7 +17,7 @@ void primEditNewsTitle(Author *A, infoAuthor iA, infoCategory iC, infoNews iNl, 
 void printByTime(Author *A, infoAuthor iA, t_date dFrom, t_date dUntil);
 void printByCategory(Author *A, infoAuthor iA, infoCategory iC);
 
-// METHOD DI BAWAH YANG DIPANGGIL DI translateCommand METHOD -----------------
+// METHOD DI BAWAH YANG DIPANGGIL DI MAIN METHOD -----------------
 void inputAuthor(Author *A);
 void inputCategory(Author *A);
 void inputNews(Author *A);

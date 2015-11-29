@@ -10,8 +10,8 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     string command;
-	Author A;
-	createAuthor(&A);
+    Author A;
+    createAuthor(&A);
 
     cout << "------=== APLIKASI PENGATURAN BLOG BERITA ===------" << endl;
     cout << "                      2015" << endl;
@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
     cout << endl;
     cout << endl;
 
-	for (;;) {
+    for (;;) {
         cout << " > ";
         getline(cin, command);
         if (command != "exit")
@@ -33,5 +33,5 @@ int main(int argc, char const *argv[])
     cout << "                  END OF PROGRAM" << endl;
     cout << "------=== APLIKASI PENGATURAN BLOG BERITA ===------" << endl;
 
-	return 0;
+    return 0;
 }

@@ -60,8 +60,14 @@ void primInsertNews(Author *A, infoAuthor iA, infoCategory iC, infoNews iN)
 	adrCategory eC;
 
 	eA = findAuthor(*A, iA);
-	eC = findCategory(eA->category, iC);
-	insertNews(&eC->news, iN);
+	if (eA != NULL) {
+        eC = findCategory(eA->category, iC);
+        if (eC != NULL)
+            insertNews(&eC->news, iN);
+        else
+            cout << "tidak ada category" << endl;
+	} else
+        cout << "tidak ada author" << endl;
 }
 void primDeleteNews(Author *A, infoAuthor iA, infoCategory iC, infoNews iN)
 {
@@ -69,8 +75,14 @@ void primDeleteNews(Author *A, infoAuthor iA, infoCategory iC, infoNews iN)
 	adrCategory eC;
 
 	eA = findAuthor(*A, iA);
-	eC = findCategory(eA->category, iC);
-	deleteNews(&eC->news, iN);
+	if (eA != NULL) {
+        eC = findCategory(eA->category, iC);
+        if (eC != NULL)
+            deleteNews(&eC->news, iN);
+        else
+            cout << "tidak ada category" << endl;
+	} else
+        cout << "tidak ada author" << endl;
 }
 void primDeleteCategory(Author *A, infoCategory iC)
 {
@@ -234,7 +246,6 @@ void inputAuthor(Author *A)
 
 	cout << "Author Name : ";
 		getline(cin, iA.nameAuthor);
-		getline(cin, iA.nameAuthor);
 	cout << "Author ID  : ";
 		cin >> iA.idAuthor;
 
@@ -245,7 +256,6 @@ void inputCategory(Author *A)
 	infoCategory iC;
 
 	cout << "Category Name : ";
-		getline(cin, iC.nameCategory);
 		getline(cin, iC.nameCategory);
 	cout << "Category ID  : ";
 		cin >> iC.idCategory;
@@ -264,20 +274,16 @@ void inputNews(Author *A)
     cout << endl;
     cout << "News detail :\n";
 	cout << "idAuthor     : ";
-		getline(cin, iN.title);
-		getline(cin, iN.title);
+		getline(cin, iA.idAuthor);
 	cout << "idCategory   : ";
-		getline(cin, iN.title);
-		getline(cin, iN.title);
+		getline(cin, iC.idCategory);
 	cout << "Title   [50] : ";
-		getline(cin, iN.title);
 		getline(cin, iN.title);
 	cout << "News ID [05] : ";
 		cin >> iN.idNews;
 	cout << "Date [dd mm yyyy] : ";
 		cin >> iN.date.dd >> iN.date.mm >> iN.date.yyyy;
 	cout << "Body : \n";
-		getline(cin, iN.body);
 		getline(cin, iN.body);
 
 	primInsertNews(A, iA, iC, iN);

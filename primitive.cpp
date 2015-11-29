@@ -184,7 +184,6 @@ void printByTime(Author *A, infoAuthor iA, t_date dFrom, t_date dUntil)
 		eC = eC->next;
 	}
 
-
 	// print news
 	eN = tN.first;
 	while (eN != NULL) {
@@ -193,10 +192,10 @@ void printByTime(Author *A, infoAuthor iA, t_date dFrom, t_date dUntil)
 			cout << eN->info.date.dd << "-" << eN->info.date.mm << "-" << eN->info.date.yyyy << endl;
 			cout << eN->info.body << endl;
 			cout << "----------------------------------------\n";
+			eN = eN->next;
 		} else if (eN->info.date.dt < dUntil.dt) {
 			eN = NULL;
 		}
-		eN = eN->next;
 	}
 }
 void printByCategory(Author *A, infoAuthor iA, infoCategory iC)

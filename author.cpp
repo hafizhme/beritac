@@ -42,7 +42,7 @@ adrAuthor findAuthor(Author A, infoAuthor F)
 {
 	adrAuthor P;
 
-	P = A.first;
+	cout << P->info.idAuthor << endl;
 	if (P->info.idAuthor == F.idAuthor)
 		return P;
 	else {

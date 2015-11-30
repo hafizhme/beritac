@@ -13,9 +13,19 @@ int main(int argc, char const *argv[])
     Author A;
     createAuthor(&A);
 
+    infoAuthor iA;
+    iA.idAuthor = "anon";
+    iA.nameAuthor = "Anonym";
+    primInsertAuthor(&A, iA);
+
+    infoCategory iC;
+    iC.idCategory = "unknown";
+    iC.nameCategory = "unknown";
+    primInsertCategory(&A, iC);
+
     cout << "------=== APLIKASI PENGATURAN BLOG BERITA ===------" << endl;
-    cout << "                      2015" << endl;
-    cout << "              IF-38-05 / kelompok 8" << endl;
+    cout << "                      2015                         " << endl;
+    cout << "              IF-38-05 / kelompok 8                " << endl;
     cout << endl;
     cout << endl;
     cout << "ketik \"help\" untuk menampilkan perintah" << endl;
@@ -30,7 +40,7 @@ int main(int argc, char const *argv[])
         else
             break;
     }
-    cout << "                  END OF PROGRAM" << endl;
+    cout << "                  END OF PROGRAM                   " << endl;
     cout << "------=== APLIKASI PENGATURAN BLOG BERITA ===------" << endl;
 
     return 0;

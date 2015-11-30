@@ -8,7 +8,7 @@ struct t_date {
 	int dd;		// hari : 01 - 31
 	int mm;		// bulan : 01 - 12
 	int yyyy;	// tahun : 2000 - 2020
-	int dt = yyyy*10000 + mm*100 + dd;
+	int dt;
 };
 
 struct infoNews

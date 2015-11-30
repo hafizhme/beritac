@@ -187,7 +187,9 @@ void printByTime(Author *A, infoAuthor iA, t_date dFrom, t_date dUntil)
 	// print news
 	eN = tN.first;
 	while (eN != NULL) {
+        cout << eN->info.date.dt << endl;
 		if ((dFrom.dt >= eN->info.date.dt) && (eN->info.date.dt >= dUntil.dt)) {
+            cout << eN->info.date.dt << endl;
 			cout << eN->info.title << endl;
 			cout << eN->info.date.dd << "-" << eN->info.date.mm << "-" << eN->info.date.yyyy << endl;
 			cout << eN->info.body << endl;
@@ -195,6 +197,8 @@ void printByTime(Author *A, infoAuthor iA, t_date dFrom, t_date dUntil)
 			eN = eN->next;
 		} else if (eN->info.date.dt < dUntil.dt) {
 			eN = NULL;
+		} else {
+            eN = eN->next;
 		}
 	}
 }
@@ -286,6 +290,7 @@ void inputNews(Author *A)
 		getline(cin, iN.body);
 		getline(cin, iN.body);
 
+    iN.date.dt = iN.date.yyyy*10000 + iN.date.mm*100 + iN.date.dd;
 	primInsertNews(A, iA, iC, iN);
 }
 
